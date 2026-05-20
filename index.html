@@ -59,7 +59,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--gd-bg);font-
 .chart-box{flex:1;min-width:0;min-height:0;}
 .chart-box .gd-glass{padding:16px;width:100%;height:100%;display:flex;flex-direction:column;}
 .chart-box h3{font-size:14px;color:var(--gd-text2);margin-bottom:8px;flex-shrink:0;}
-.chart-container{flex:1;min-height:0;}
+.chart-container{flex:1;min-height:200px;height:100%;}
 
 /* Insight cards */
 .insight-row{display:flex;gap:12px;margin-top:14px;flex-shrink:0;}
@@ -245,17 +245,17 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--gd-bg);font-
       <div class="gd-glass"><div class="kpi-val green">+19.2%</div><div class="kpi-label">卤味 YOY</div></div>
       <div class="gd-glass"><div class="kpi-val blue">12</div><div class="kpi-label">二级品类</div></div>
     </div>
-    <div class="charts-row">
+    <div class="charts-row" style="min-height:320px;">
       <div class="chart-box">
-        <div class="gd-glass">
+        <div class="gd-glass" style="height:100%;display:flex;flex-direction:column;">
           <h3>GMV 占比分布</h3>
-          <div id="chart-pie" class="chart-container"></div>
+          <div id="chart-pie" style="flex:1;min-height:260px;"></div>
         </div>
       </div>
       <div class="chart-box">
-        <div class="gd-glass">
+        <div class="gd-glass" style="height:100%;display:flex;flex-direction:column;">
           <h3>品类 YOY 增速</h3>
-          <div id="chart-yoy" class="chart-container"></div>
+          <div id="chart-yoy" style="flex:1;min-height:260px;"></div>
         </div>
       </div>
     </div>
@@ -267,9 +267,9 @@ html,body{width:100vw;height:100vh;overflow:hidden;background:var(--gd-bg);font-
   <div class="content-wrap">
     <div class="eyebrow">02 · 三级类目增长信号</div>
     <h2>GMV × YOY 气泡图 — 识别真正增量赛道</h2>
-    <div class="chart-box" style="flex:0.6;min-height:0;">
-      <div class="gd-glass" style="padding:16px;width:100%;height:100%;">
-        <div id="chart-bubble" class="chart-container"></div>
+    <div class="chart-box" style="flex:1;min-height:300px;height:55%;">
+      <div class="gd-glass" style="padding:16px;width:100%;height:100%;display:flex;flex-direction:column;">
+        <div id="chart-bubble" style="flex:1;min-height:260px;"></div>
       </div>
     </div>
     <div class="insight-row">
@@ -652,8 +652,8 @@ const L2=[
 ];
 
 function initCharts1(){
-  const pieEl=document.getElementById('ch-pie');
-  const barEl=document.getElementById('ch-yoy');
+  const pieEl=document.getElementById('chart-pie');
+  const barEl=document.getElementById('chart-yoy');
   if(!pieEl||!barEl)return;
   const pie=echarts.init(pieEl);
   pie.setOption({
@@ -693,7 +693,7 @@ const L3=[
 ];
 
 function initBubble(){
-  const el=document.getElementById('ch-bubble');
+  const el=document.getElementById('chart-bubble');
   if(!el)return;
   const chart=echarts.init(el);
   chart.setOption({
